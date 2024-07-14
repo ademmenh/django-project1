@@ -36,3 +36,4 @@ class ClientPost (models.Model):
         indexes = [
             models.Index(name="i_ClientPost_FoerignKeys", fields=["c_id", "p_id"]),
         ]
+
