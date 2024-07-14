@@ -37,3 +37,15 @@ class ClientPost (models.Model):
             models.Index(name="i_ClientPost_FoerignKeys", fields=["c_id", "p_id"]),
         ]
 
+
+
+
+class Artist(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=20, null=False)
+
+
+class Song(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=20)
+    artist = models.ForeignKey(Artist, to_field="id", on_delete=models.RESTRICT, null=False)
