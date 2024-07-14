@@ -45,7 +45,16 @@ class Artist(models.Model):
     name = models.CharField(max_length=20, null=False)
 
 
+class Album(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name= models.CharField(max_length=20)
+    artist = models.ForeignKey(Artist, to_field="id", on_delete=models.CASCADE)
+
+
 class Song(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
-    artist = models.ForeignKey(Artist, to_field="id", on_delete=models.RESTRICT, null=False)
+    artist = models.ForeignKey(Artist, to_field="id", on_delete=models.CASCADE, null=False)
+    song = models.ForeignKey(Album, to_field="id", on_delete=models.RESTRICT, null=True)
+
+
