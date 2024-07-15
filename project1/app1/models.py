@@ -8,6 +8,7 @@ class Client (models.Model):
     lname = models.CharField(max_length=15, null=False)
     bday = models.DateField(null=False)
     iday = models.DateField(null=False, default=datetime.now)
+    # size = models.ForeignKey("ClientSize", to_field="idsize", on_delete=models.PROTECT, default='D')
 
 
     class Meta:
@@ -42,4 +43,29 @@ class ClientPost (models.Model):
 class ClientReliabality(models.Model):
     iday = models.DateField(primary_key=True)
     reliablity = models.CharField(max_length=1)
+
+class ClientSize (models.Model):
+    CHOICES_ID = {
+        'A':"xxs",
+        'B':'xs',
+        'C':'s',
+        'D':'m',
+        'E':'l',
+        'F':'xl',
+        'G':'xxl',
+    }
+
+    CHOICES_SIZE = {
+        'XXS':'xxs',
+        'XS':'xs',
+        'S':'s',
+        'M':'m',
+        'L':'l',
+        'XL':'xl',
+        'XXL':'xxl',
+    }
+
+    id = models.IntegerField(primary_key=True)
+    idsize = models.CharField(max_length=1, choices=CHOICES_ID, unique=True)
+    size = models.CharField(max_length=3, choices=CHOICES_SIZE)
 
