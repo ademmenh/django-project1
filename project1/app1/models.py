@@ -7,6 +7,8 @@ class Client (models.Model):
     fname = models.CharField(max_length=20, null=False)
     lname = models.CharField(max_length=15, null=False)
     bday = models.DateField(null=False)
+    iday = models.DateField(null=False)
+
 
     class Meta:
         indexes = [
@@ -37,5 +39,7 @@ class ClientPost (models.Model):
             models.Index(name="i_ClientPost_FoerignKeys", fields=["c_id", "p_id"]),
         ]
 
-
-
+class ClientReliabality(models.Model):
+    iday = models.DateField(primary_key=True)
+    reliablity = models.CharField(max_length=1)
+    
