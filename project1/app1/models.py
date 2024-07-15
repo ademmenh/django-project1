@@ -8,7 +8,7 @@ class Client (models.Model):
     lname = models.CharField(max_length=15, null=False)
     bday = models.DateField(null=False)
     iday = models.DateField(null=False, default=datetime.now)
-    size = models.ForeignKey("ClientSize", to_field="idsize", on_delete=models.PROTECT, default='D')
+    size = models.ForeignKey("ClientSize", to_field="idsize", on_delete=models.PROTECT, null=True)
 
 
     class Meta:
