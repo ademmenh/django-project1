@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime
 # Create your models here.
 
 class Client (models.Model):
@@ -7,7 +7,7 @@ class Client (models.Model):
     fname = models.CharField(max_length=20, null=False)
     lname = models.CharField(max_length=15, null=False)
     bday = models.DateField(null=False)
-    iday = models.DateField(null=False)
+    iday = models.DateField(null=False, default=datetime.now)
 
 
     class Meta:
@@ -42,4 +42,4 @@ class ClientPost (models.Model):
 class ClientReliabality(models.Model):
     iday = models.DateField(primary_key=True)
     reliablity = models.CharField(max_length=1)
-    
+
