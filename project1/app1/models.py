@@ -41,26 +41,7 @@ class ClientPost (models.Model):
         ]
 
 class ClientSize (models.Model):
-    CHOICES_ID = {
-        'A':"xxs",
-        'B':'xs',
-        'C':'s',
-        'D':'m',
-        'E':'l',
-        'F':'xl',
-        'G':'xxl',
-    }
-
-    CHOICES_SIZE = {
-        'XXS':'xxs',
-        'XS':'xs',
-        'S':'s',
-        'M':'m',
-        'L':'l',
-        'XL':'xl',
-        'XXL':'xxl',
-    }
 
     id = models.IntegerField(primary_key=True)
-    idsize = models.CharField(max_length=1, choices=CHOICES_ID, unique=True)
-    size = models.CharField(max_length=3, choices=CHOICES_SIZE)
+    idsize = models.CharField(max_length=1, unique=True)
+    size = models.CharField(max_length=3)
