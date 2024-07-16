@@ -40,10 +40,6 @@ class ClientPost (models.Model):
             models.Index(name="i_ClientPost_FoerignKeys", fields=["c_id", "p_id"]),
         ]
 
-class ClientReliabality(models.Model):
-    iday = models.DateField(primary_key=True)
-    reliablity = models.CharField(max_length=1)
-
 class ClientSize (models.Model):
     CHOICES_ID = {
         'A':"xxs",
