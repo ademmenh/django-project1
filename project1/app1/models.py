@@ -8,8 +8,7 @@ class Client (models.Model):
     lname = models.CharField(max_length=15, null=False)
     bday = models.DateField(null=False)
     iday = models.DateField(null=False, default=datetime.now)
-    size = models.ForeignKey("ClientSize", to_field="idsize", on_delete=models.PROTECT, null=True)
-
+    
 
     class Meta:
         indexes = [
@@ -40,8 +39,4 @@ class ClientPost (models.Model):
             models.Index(name="i_ClientPost_FoerignKeys", fields=["c_id", "p_id"]),
         ]
 
-class ClientSize (models.Model):
 
-    id = models.IntegerField(primary_key=True)
-    idsize = models.CharField(max_length=1, unique=True)
-    size = models.CharField(max_length=3)
