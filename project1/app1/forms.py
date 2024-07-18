@@ -1,13 +1,8 @@
 from django import forms
+from . import models
 
-class InputForm(forms.Form):
+class FormClient(forms.ModelForm):
+    class Meta:
+        model = models.Client
+        fields = ["fname", "lname", "bday", ]
 
-    CHOICES_GENDER = {
-    "m":"man",
-    "w":"woman",
-    }
-
-    fname = forms.CharField(max_length=20)
-    lname = forms.CharField(max_length=20)
-    gender = forms.ChoiceField(choices=CHOICES_GENDER)
-    time = forms.TimeField()

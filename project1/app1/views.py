@@ -4,10 +4,21 @@ from . import forms
 # Create your views here.
 
 def form(request):
-    form = forms.InputForm()
+
+    if (request.method == "POST"):
+        form = forms.FormClient(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("done!")
+        else:
+            HttpResponse("Errore")
+    else:
+        form = forms.FormClient()
+
     context = {"form": form}
 
-    return render(request, "form.html", context)
+    return render(request, 'form.html', context)
+
 
 def home(request):
     return HttpResponse("this is home.")
