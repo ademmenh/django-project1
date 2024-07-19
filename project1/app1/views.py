@@ -14,7 +14,7 @@ def form(request):
         form = forms.FormClient()
 
     context = {"form": form}
-
+    print(form)
     return render(request, 'form.html', context)
 
 
