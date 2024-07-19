@@ -44,7 +44,7 @@ class ClientPost (models.Model):
 
 
 class ClientSalary(models.Model):
-
+    
     CHOICES_RATING={
         'A':'',
         'B':'',
