@@ -2,25 +2,26 @@ from django.shortcuts import render, HttpResponse
 from . import forms
 from . import models
 
-# Create your views here.
+
+
+
+
 
 def form(request):
-    if (request.method == "POST"):
+    if request.method == "GET":
+        form = forms.FormUser()
+
+    elif request.method == "POST":
         form = forms.FormUser(request.POST)
 
-
         if form.is_valid():
-            vfname = request.POST['fname']
-            form.fnameIsCorrect(vfname)
+            formSubmition = request.POST
+            form.fnameIsCorrect(formSubmition['fname'])
 
-
-            ouser1 = models.User.objects.create(fname="{vfname}")
+            models.User.objects.create(fname=formSubmition['fname'])
             return HttpResponse("done!")
-    else:
-        form = forms.FormUser()
     
-    #form = forms.FormUser()
-    context = {"form": form}
+    context = {"form":form, }
     return render(request, 'form.html', context)
 
 
