@@ -10,8 +10,6 @@ def form(request):
         if form.is_valid():
             form.save()
             return HttpResponse("done!")
-        else:
-            HttpResponse("Errore")
     else:
         form = forms.FormClient()
 
