@@ -14,13 +14,15 @@ def form(request):
     elif request.method == "POST":
         form = forms.FormUser(request.POST)
 
+
         if form.is_valid():
             formSubmition = request.POST
-            form.fnameIsCorrect(formSubmition['fname'])
+            form.IsCorrect(formSubmition['fname'])
 
             models.User.objects.create(fname=formSubmition['fname'])
             return HttpResponse("done!")
     
+
     context = {"form":form, }
     return render(request, 'form.html', context)
 

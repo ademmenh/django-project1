@@ -3,7 +3,8 @@ from datetime import datetime
 from django.core.exceptions import ValidationError
 
 
-# Create your models here.
+
+
 
 class Client (models.Model):
     id = models.IntegerField(primary_key=True)
@@ -19,6 +20,9 @@ class Client (models.Model):
             models.Index(name="i_Client_fname", fields=['fname']),
             models.Index(name="i_Client_lname", fields=['lname']),
         ]
+
+
+
 
 
 class ClientSalary(models.Model):
