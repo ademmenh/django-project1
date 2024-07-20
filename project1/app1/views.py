@@ -22,7 +22,7 @@ def form(request):
             models.User.objects.create(fname=formSubmition['fname'])
             return HttpResponse("done!")
     
-
+    print(request.user)
     context = {"form":form, }
     return render(request, 'form.html', context)
 

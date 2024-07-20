@@ -21,6 +21,8 @@ class Client (models.Model):
             models.Index(name="i_Client_lname", fields=['lname']),
         ]
 
+    def __str__(self):
+        return f"{self.id}, {self.fname}, {self.lname}, {self.salary}"
 
 
 
@@ -49,3 +51,6 @@ class ClientSalary(models.Model):
 class User (models.Model):
     id = models.BigAutoField(primary_key=True)
     fname = models.CharField(max_length=20, null=False)
+
+    def __str__(self):
+        return str(self.id) + ' ' + str(self.fname)
