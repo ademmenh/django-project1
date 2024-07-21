@@ -19,10 +19,9 @@ def form(request):
             formSubmition = request.POST
             form.IsCorrect(formSubmition['fname'])
 
-            models.User.objects.create(fname=formSubmition['fname'])
+            models.Users.objects.create(fname=formSubmition['fname'])
             return HttpResponse("done!")
     
-    print(request.user)
     context = {"form":form, }
     return render(request, 'form.html', context)
 
