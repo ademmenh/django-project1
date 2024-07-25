@@ -44,7 +44,10 @@ class ClientSalary(models.Model):
 
 class Users (models.Model):
     id = models.BigAutoField(primary_key=True)
-    fname = models.CharField(max_length=20, null=False)
+    fname = models.CharField(max_length=20, null=False, default='')
+    lname  = models.CharField(max_length=20, null=False, default='')
+    age = models.SmallIntegerField(null=False, default=0)
+
 
     def __str__(self):
-        return str(self.id) + ' ' + str(self.fname)
+        return str(self.id) + ' ' + str(self.fname) + ' ' + str(self.lname) + ' ' + str(self.age)

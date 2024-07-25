@@ -19,10 +19,10 @@ def form(request):
         form = forms.FormUser(request.POST)
 
         if form.is_valid():
-            formSubmition = request.POST
-            form.IsCorrect(formSubmition['fname'])
+            Submitionform = request.POST
+            form.IsCorrect(Submitionform)
 
-            models.Users.objects.create(fname=formSubmition['fname'])
+            models.Users.objects.create(fname=Submitionform['fname'], lname=Submitionform['lname'], age=Submitionform['age'])
 
             context = {'fname':request.POST['fname'], }
             return render(request, 'done.html', context)

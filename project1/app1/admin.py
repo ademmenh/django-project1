@@ -22,8 +22,9 @@ class ClientSalaryAdmin (admin.ModelAdmin):
     list_filter = ("rating",)
 
     #individual form
-    fieldsets = (("Salary", {"fields" : ("salary", )}),
-                 ("Rating", {"fields" : ("rating", )}))
+    # fieldsets = (("Salary", {"fields" : ("salary", )}),
+                #  ("Rating", {"fields" : ("rating", )}))
+                
 
 
 

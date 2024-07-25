@@ -14,10 +14,21 @@ class FormClient(forms.Form):
 
 
 class FormUser(forms.Form):
-    fname = forms.CharField(max_length=20, label="First Name:", required=True, error_messages={"required":"you have to enter your name."})
+    fname = forms.CharField(max_length=20, label="First Name:", required=True, error_messages={"required":"you have to enter your first name."})
+    lname = forms.CharField(max_length=20, label='Last Name:', required=True, error_messages={"required":"you have to enter you last name."} )
+    age = forms.IntegerField(required=True, label='Age', error_messages={"requied":"you have to enter you age."})
 
-    def IsCorrect(self, object):
-        if object[0].islower():
-            raise ValidationError("the first letter is in LowerCase.")
+
+    def IsCorrect(self, dic):
+
+        if dic.get('fname')[0].islower():
+            raise ValidationError('the first letter in first name is in lowerCase.')
         
-        return object
+        if dic.get('lname')[0].islower():
+            raise ValidationError('the first letter in last name is in lowerCase.')
+            
+        if int(dic.get('age'))<0 or int(dic.get('age'))>100:
+            raise ValidationError('You age is weird!!')
+            
+        return True
+    
