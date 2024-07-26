@@ -6,26 +6,26 @@ from . import models
 
 
 
+# TODO fix the registration
 
 def form(request):
-
     if request.method == "GET":
-        form = forms.FormUser()
-        context = {"form":form, }
-        return render(request, 'form.html', context)
+        return render(request, 'form.html', {})
 
 
     elif request.method == "POST":
-        form = forms.FormUser(request.POST)
+        print(request.POST)
+        return render(request, 'done.html', {})
+        # form = forms.FormUser(request.POST)
 
-        if form.is_valid():
-            Submitionform = request.POST
-            form.IsCorrect(Submitionform)
+        # if form.is_valid():
+        #     Submitionform = request.POST
+        #     form.IsCorrect(Submitionform)
 
-            models.Users.objects.create(fname=Submitionform['fname'], lname=Submitionform['lname'], age=Submitionform['age'])
+        #     models.Users.objects.create(fname=Submitionform['fname'], lname=Submitionform['lname'], age=Submitionform['age'])
 
-            context = {'fname':request.POST['fname'], }
-            return render(request, 'done.html', context)
+        #     context = {'fname':request.POST['fname'], }
+        #     return render(request, 'done.html', context)
 
     else:
         context = {}
