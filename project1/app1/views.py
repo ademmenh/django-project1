@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse
 from . import forms
 from . import models
 
+from django.core.exceptions import ValidationError
 
 
 
@@ -9,24 +10,28 @@ from . import models
 # TODO fix the registration
 
 def form(request):
-    if request.method == "GET":
-        return render(request, 'form.html', {})
 
+    if request.method == "GET":
+        form = forms.FormUsers()
+        # print(form)
+        context = {'form': form, }
+        return render(request, 'form.html', context)
 
     elif request.method == "POST":
-        print(request.POST)
-        return render(request, 'done.html', {})
-        # form = forms.FormUser(request.POST)
+        form = forms.FormUsers(request.POST)
+        # print(form)
 
-        # if form.is_valid():
-        #     Submitionform = request.POST
-        #     form.IsCorrect(Submitionform)
+        if form.is_valid():
+            Submitionform = request.POST
+            form.IsCorrect(Submitionform)
 
-        #     models.Users.objects.create(fname=Submitionform['fname'], lname=Submitionform['lname'], age=Submitionform['age'])
+            models.Users.objects.create(fname=Submitionform['fname'], lname=Submitionform['lname'], age=Submitionform['age'])
 
-        #     context = {'fname':request.POST['fname'], }
-        #     return render(request, 'done.html', context)
-
+            context = {'fname':request.POST['fname'], }
+            return render(request, 'done.html', context)
+        else:
+            return render(request, 'error.html', {})
+                
     else:
         context = {}
         render(request, 'error.html', context)

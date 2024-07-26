@@ -6,17 +6,24 @@ from django.core.exceptions import ValidationError
 
 
 
+
+
+
 class FormClient(forms.Form):
-    fname = forms.CharField(max_length=20, label="First Name:", required=True, initial="enter your name here..." )
+    fname = forms.CharField(max_length=20, label="first name:", required=True, error_messages={'required':'you have to enter your first name !!!'}, )
 
     
 
 
 
-class FormUser(forms.Form):
-    fname = forms.CharField(max_length=20, label="First Name:", required=True, error_messages={"required":"you have to enter your first name."})
-    lname = forms.CharField(max_length=20, label='Last Name:', required=True, error_messages={"required":"you have to enter you last name."} )
-    age = forms.IntegerField(required=True, label='Age', error_messages={"requied":"you have to enter you age."})
+
+
+
+class FormUsers(forms.Form):
+    fname = forms.CharField(max_length=20, label='First Name:', required=True, error_messages={'required':"you have to enter your first name."}, )
+    lname = forms.CharField(max_length=20, label='Last Name:', required=True, error_messages={'required':"you have to enter you last name."}, )
+    age = forms.IntegerField(label='Age', required=True, error_messages={'requied':"you have to enter you age."}, )
+
 
 
     def IsCorrect(self, dic):
