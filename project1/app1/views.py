@@ -2,12 +2,13 @@ from django.shortcuts import render, HttpResponse
 from . import forms
 from . import models
 
+from django.views import generic
+
 from django.core.exceptions import ValidationError
 
 
 
 
-# TODO fix the registration
 
 def form(request):
 
@@ -43,4 +44,3 @@ def form(request):
 
 def home(request):
     return HttpResponse("this is home.")
-
